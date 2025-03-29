@@ -1,0 +1,1 @@
+// Archivo vacío - ya no necesitamos estas declaraciones 

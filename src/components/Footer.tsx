@@ -51,19 +51,12 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-studio-red flex-shrink-0 mt-1" />
-                <span className="text-studio-beige/80">Matriz: 2a sur entre 1a y 2a ote. #210-C,<br />Tuxtla Gutierrez, Chiapas, México</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-studio-red flex-shrink-0 mt-1" />
-                <span className="text-studio-beige/80">Sucursal San Roque: 3a sur entre 3a y 4a ote. #412,<br />Tuxtla Gutierrez, Chiapas, México</span>
+                <span className="text-studio-beige/80">
+                Av. Rayón norte enfrente de la cacaoatera tuzantan a lado de valeria don mundo<br />Huixtla, Chiapas, México</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-studio-red flex-shrink-0" />
-                <span className="text-studio-beige/80">961 238 7687</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-studio-red flex-shrink-0" />
-                <span className="text-studio-beige/80">961 134 2752</span>
+                <span className="text-studio-beige/80">964 124 4016</span>
               </div>
             </div>
           </div>

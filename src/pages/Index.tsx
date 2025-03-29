@@ -1,20 +1,11 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
-// Lazy load components
-const HeroSection = React.lazy(() => import('@/components/HeroSection'));
-const ServicesSection = React.lazy(() => import('@/components/ServicesSection'));
-const PortfolioSection = React.lazy(() => import('@/components/PortfolioSection'));
-const TestimonialSection = React.lazy(() => import('@/components/TestimonialSection'));
-const ContactSection = React.lazy(() => import('@/components/ContactSection'));
-
-// Loading fallback component
-const LoadingFallback = () => (
-  <div className="flex items-center justify-center min-h-[200px]">
-    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-studio-brown"></div>
-  </div>
-);
+import HeroSection from '@/components/HeroSection';
+import ServicesSection from '@/components/ServicesSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import TestimonialSection from '@/components/TestimonialSection';
+import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
   return (
@@ -22,29 +13,19 @@ const Index = () => {
       <Navbar />
       <main>
         <div id="inicio">
-          <Suspense fallback={<LoadingFallback />}>
-            <HeroSection />
-          </Suspense>
+          <HeroSection />
         </div>
         <div id="servicios">
-          <Suspense fallback={<LoadingFallback />}>
-            <ServicesSection />
-          </Suspense>
+          <ServicesSection />
         </div>
         <div id="portfolio">
-          <Suspense fallback={<LoadingFallback />}>
-            <PortfolioSection />
-          </Suspense>
+          <PortfolioSection />
         </div>
         <div id="testimonios">
-          <Suspense fallback={<LoadingFallback />}>
-            <TestimonialSection />
-          </Suspense>
+          <TestimonialSection />
         </div>
         <div id="contacto">
-          <Suspense fallback={<LoadingFallback />}>
-            <ContactSection />
-          </Suspense>
+          <ContactSection />
         </div>
       </main>
       <Footer />

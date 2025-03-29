@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
@@ -130,7 +129,7 @@ const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-studio-red flex-shrink-0 mt-1" />
                   <div className="ml-4">
                     <h4 className="font-semibold">Dirección</h4>
-                    <p className="text-studio-brown/80">Calle del Estudio, 123<br />Madrid, España 28001</p>
+                    <p className="text-studio-brown/80">Av. Rayon norte, frente de la cacaoatera tuzantan<br />Huixtla, Mexico, 30690</p>
                   </div>
                 </div>
                 
@@ -138,7 +137,7 @@ const ContactSection = () => {
                   <Phone className="h-6 w-6 text-studio-red flex-shrink-0 mt-1" />
                   <div className="ml-4">
                     <h4 className="font-semibold">Teléfono</h4>
-                    <p className="text-studio-brown/80">+34 612 345 678</p>
+                    <p className="text-studio-brown/80">+52 964 124 4016</p>
                   </div>
                 </div>
                 
@@ -166,15 +165,15 @@ const ContactSection = () => {
             
             <div className="w-full h-60 rounded-lg overflow-hidden">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12143.354061214883!2d-3.7037470557623824!3d40.41677565935858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid%2C%20Spain!5e0!3m2!1sen!2sus!4v1696001997940!5m2!1sen!2sus" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30810.639394966733!2d-92.48939558620138!3d15.140215166385687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85920644fbcf9c2f%3A0x9449731c55bedc39!2sHuixtla%2C%20Chis.!5e0!3m2!1ses!2smx!4v1743274265505!5m2!1ses!2smx"
+                width="600"
+                height="450"
+                className="w-full rounded-lg shadow-lg"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa de ubicación"
-              ></iframe>
+              />
             </div>
           </div>
         </div>
