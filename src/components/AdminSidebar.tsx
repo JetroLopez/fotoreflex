@@ -107,6 +107,12 @@ const AdminSidebar = ({ isMobile = false }: AdminSidebarProps) => {
       label: 'Ajustes',
       icon: <Settings size={20} />,
     },
+    {
+      path: '/admin/configuracion',
+      label: 'Configuración',
+      icon: <Cog size={20} />,
+      adminOnly: true,
+    },
   ];
 
   const isAdmin = profile?.role === 'admin';
