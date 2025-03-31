@@ -12,6 +12,7 @@ import {
   Camera,
   UsersRound,
   Cog,
+  MessageSquare,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -96,6 +97,11 @@ const AdminSidebar = ({ isMobile = false }: AdminSidebarProps) => {
       path: '/admin/grupos',
       label: 'Grupos',
       icon: <UsersRound size={20} />,
+    },
+    {
+      path: '/admin/contacto',
+      label: 'Mensajes',
+      icon: <MessageSquare size={20} />,
     },
     {
       path: '/admin/fotografias',

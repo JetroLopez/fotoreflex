@@ -265,6 +265,39 @@ export interface Database {
           }
         ]
       }
+      contact_messages: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          message: string
+          is_reviewed: boolean
+          created_at: string
+          message_hash: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          message: string
+          is_reviewed?: boolean
+          created_at?: string
+          message_hash: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          message?: string
+          is_reviewed?: boolean
+          created_at?: string
+          message_hash?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -294,15 +327,4 @@ export type PhotoPackage = Tables<'photo_packages'>
 export type Order = Tables<'orders'>
 export type PhotoService = Tables<'photo_services'>
 export type ServiceOption = Tables<'service_options'>
-
-export interface PhotoService {
-  id: string;
-  type?: string;
-  description: string;
-  base_price: number;
-  active?: boolean;
-  created_at?: string;
-  updated_at?: string;
-  is_customizable?: boolean;
-  customization_note?: string;
-} 
+export type ContactMessage = Tables<'contact_messages'> 
