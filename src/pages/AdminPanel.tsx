@@ -9,6 +9,7 @@ import FotografiasPage from '@/components/admin/FotografiasPage';
 import AjustesPage from '@/components/admin/AjustesPage';
 import GruposPage from '@/components/admin/GruposPage';
 import DetalleGrupoPage from '@/components/admin/grupos/DetalleGrupoPage';
+import ConfiguracionPage from '@/components/admin/configuracion/ConfiguracionPage';
 
 const AdminPanel = () => {
   return (
@@ -22,6 +23,7 @@ const AdminPanel = () => {
           <Route path="/ordenes" element={<OrdenesPage />} />
           <Route path="/fotografias" element={<FotografiasPage />} />
           <Route path="/ajustes" element={<AjustesPage />} />
+          <Route path="/configuracion" element={<ConfiguracionPage />} />
         </Routes>
       </AdminLayout>
     </AuthProvider>

@@ -201,6 +201,70 @@ export interface Database {
           updated_at?: string
         }
       }
+      photo_services: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          base_price: number
+          created_at?: string
+          updated_at?: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string
+          base_price: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string
+          base_price?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      service_options: {
+        Row: {
+          id: string
+          service_id: string
+          label: string
+          option_type: 'dropdown' | 'checkbox'
+          choices: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Insert: {
+          id?: string
+          service_id: string
+          label: string
+          option_type?: 'dropdown' | 'checkbox'
+          choices: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          service_id?: string
+          label?: string
+          option_type?: 'dropdown' | 'checkbox'
+          choices?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_options_service_id_fkey"
+            columns: ["service_id"]
+            referencedRelation: "photo_services"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -227,4 +291,18 @@ export type Group = Tables<'groups'>
 export type GroupMember = Tables<'group_members'>
 export type Customer = Tables<'customers'>
 export type PhotoPackage = Tables<'photo_packages'>
-export type Order = Tables<'orders'> 
+export type Order = Tables<'orders'>
+export type PhotoService = Tables<'photo_services'>
+export type ServiceOption = Tables<'service_options'>
+
+export interface PhotoService {
+  id: string;
+  type?: string;
+  description: string;
+  base_price: number;
+  active?: boolean;
+  created_at?: string;
+  updated_at?: string;
+  is_customizable?: boolean;
+  customization_note?: string;
+} 

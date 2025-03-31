@@ -124,9 +124,8 @@ const AdminDashboard = () => {
             priority,
             customer:customers!inner(name, phone)
           `)
-          .gte('created_at', sevenDaysAgoStr)
           .order('created_at', { ascending: false })
-          .limit(5) as { data: Order[] };
+          .limit(10);
 
         // Contar órdenes por estado
         const estadoCount = {
