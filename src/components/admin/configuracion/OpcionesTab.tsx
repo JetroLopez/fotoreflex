@@ -102,15 +102,23 @@ const OpcionesTab = () => {
   const handleEdit = (option: EditableServiceOption) => {
     setCurrentOption(option);
     let processedChoices = option.choices;
+    
+    // Si es un string, intentar parsearlo como JSON
     if (typeof processedChoices === 'string') {
       try {
         processedChoices = JSON.parse(processedChoices);
       } catch (e) {
-        processedChoices = [processedChoices];
+        // Si no es JSON válido, usar el valor tal cual
+        processedChoices = option.choices;
       }
     }
-    // Convertir el array de opciones a texto con saltos de línea
-    const choicesText = Array.isArray(processedChoices) ? processedChoices.join('\n') : processedChoices;
+
+    // Si es un array, convertirlo a texto con saltos de línea
+    const choicesText = Array.isArray(processedChoices) 
+      ? processedChoices.join('\n') 
+      : typeof processedChoices === 'object' 
+        ? JSON.stringify(processedChoices, null, 2) 
+        : String(processedChoices);
     
     setFormData({
       service_id: option.service_id,
@@ -162,18 +170,36 @@ const OpcionesTab = () => {
       return;
     }
 
+    // Procesar las opciones según el tipo
+    let processedChoices;
+    if (formData.option_type === 'dropdown') {
+      // Para dropdown, dividir por líneas y filtrar líneas vacías
+      processedChoices = formData.choices
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line !== '');
+    } else {
+      // Para checkbox, usar el texto tal cual
+      processedChoices = formData.choices.trim();
+    }
+
+    const finalFormData = {
+      ...formData,
+      choices: processedChoices
+    };
+
     if (currentOption) {
       // Editar existente
       setOptions(options.map(o => 
         o.id === currentOption.id 
-          ? { ...o, ...formData, isEdited: true } 
+          ? { ...o, ...finalFormData, isEdited: true } 
           : o
       ));
     } else {
       // Nueva opción
       const newOption: EditableServiceOption = {
         id: `new-${Date.now()}`, // ID temporal
-        ...formData,
+        ...finalFormData,
         isNew: true
       };
       setOptions([...options, newOption]);
