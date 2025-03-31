@@ -284,10 +284,16 @@ const AdminDashboard = () => {
             </Button>
           </CardHeader>
           <CardContent>
-            {stats.actividadReciente.filter(orden => orden.priority === 'urgente').length > 0 ? (
+            {stats.actividadReciente.filter(orden => 
+              orden.priority === 'urgente' && 
+              (orden.status === 'pendiente' || orden.status === 'en_proceso')
+            ).length > 0 ? (
               <div className="space-y-4">
                 {stats.actividadReciente
-                  .filter(orden => orden.priority === 'urgente')
+                  .filter(orden => 
+                    orden.priority === 'urgente' && 
+                    (orden.status === 'pendiente' || orden.status === 'en_proceso')
+                  )
                   .slice(0, 5)
                   .map((actividad) => (
                     <div key={actividad.id} className="flex items-center justify-between">
@@ -303,7 +309,7 @@ const AdminDashboard = () => {
               </div>
             ) : (
               <div className="text-sm text-gray-500 flex items-center justify-center h-32">
-                No hay órdenes urgentes pendientes.
+                No hay órdenes urgentes pendientes o en proceso.
               </div>
             )}
           </CardContent>
