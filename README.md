@@ -1,72 +1,107 @@
-# Welcome to your Lovable project
+# Foto Réflex - Sistema de Gestión Fotográfica
 
-## Project info
+## Descripción del Proyecto
 
-**URL**: https://lovable.dev/projects/8a03f5de-2ca3-48b0-b7d8-5606b5a27dcb
+Foto Réflex es una aplicación web completa diseñada para estudios fotográficos profesionales, que permite la gestión integral de servicios fotográficos, pedidos y relación con clientes. El sistema está optimizado para el manejo eficiente de un estudio fotográfico profesional ubicado en Huixtla, Chiapas.
 
-## How can I edit this code?
+## Características Principales
 
-There are several ways of editing your application.
+### Portal Público
+- **Página de Inicio**: Presentación profesional del estudio y sus servicios
+- **Catálogo de Servicios**: Muestra detallada de servicios fotográficos disponibles
+- **Portafolio**: Galería de trabajos realizados
+- **Sección de Contacto**: Información de ubicación y medios de contacto
 
-**Use Lovable**
+### Portal Cliente
+- **Gestión de Cuenta**: Registro e inicio de sesión de clientes
+- **Visualización de Órdenes**: Seguimiento de pedidos en curso
+- **Historial de Servicios**: Registro de servicios contratados
+- **Descarga de Fotografías**: Acceso a fotografías digitales
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8a03f5de-2ca3-48b0-b7d8-5606b5a27dcb) and start prompting.
+### Panel Administrativo
+- **Gestión de Órdenes**: Control completo de pedidos y su estado
+- **Administración de Clientes**: Base de datos de clientes y sus historiales
+- **Gestión de Servicios**: Configuración de servicios y opciones
+- **Control de Grupos**: Organización de sesiones grupales
+- **Configuración del Sistema**: Personalización de opciones y precios
 
-Changes made via Lovable will be committed automatically to this repo.
+## Tecnologías Utilizadas
 
-**Use your preferred IDE**
+El proyecto está construido con tecnologías modernas:
+- **Frontend**: React con TypeScript
+- **Estilizado**: Tailwind CSS y shadcn-ui
+- **Construcción**: Vite
+- **Base de Datos**: Supabase
+- **Autenticación**: Sistema integrado con Supabase
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Instalación y Desarrollo Local
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Para ejecutar el proyecto localmente, sigue estos pasos:
 
-Follow these steps:
+```bash
+# Clonar el repositorio
+git clone <URL_DEL_REPOSITORIO>
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Navegar al directorio del proyecto
+cd fotoreflex
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Instalar dependencias
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Requisitos Previos
+- Node.js (versión recomendada: 16.x o superior)
+- npm (incluido con Node.js)
+- Cuenta en Supabase para la base de datos
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Estructura del Proyecto
 
-**Use GitHub Codespaces**
+```
+fotoreflex/
+├── src/
+│   ├── components/     # Componentes reutilizables
+│   ├── pages/         # Páginas principales
+│   ├── context/       # Contextos de React
+│   ├── lib/           # Utilidades y configuraciones
+│   └── types/         # Definiciones de tipos TypeScript
+├── public/           # Archivos estáticos
+└── ...
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Configuración
 
-## What technologies are used for this project?
+El proyecto requiere las siguientes variables de entorno:
 
-This project is built with .
+```env
+VITE_SUPABASE_URL=tu_url_de_supabase
+VITE_SUPABASE_ANON_KEY=tu_clave_anonima
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Características de Seguridad
+- Autenticación segura de usuarios
+- Protección de rutas administrativas
+- Manejo seguro de sesiones
+- Encriptación de datos sensibles
 
-## How can I deploy this project?
+## Funcionalidades Principales
 
-Simply open [Lovable](https://lovable.dev/projects/8a03f5de-2ca3-48b0-b7d8-5606b5a27dcb) and click on Share -> Publish.
+### Gestión de Servicios
+- Configuración flexible de servicios fotográficos
+- Opciones personalizables para cada servicio
+- Sistema de precios dinámico
 
-## I want to use a custom domain - is that possible?
+### Gestión de Órdenes
+- Creación y seguimiento de órdenes
+- Estado en tiempo real
+- Notificaciones de actualizaciones
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+### Administración de Clientes
+- Perfiles detallados de clientes
+- Historial de servicios
+- Gestión de grupos y eventos
 
 # FotoReflex
 
@@ -165,3 +200,13 @@ Para aplicar esta función, ejecuta el archivo de migración: `supabase/migratio
 
 - [Supabase RLS Documentation](https://supabase.com/docs/guides/auth/row-level-security)
 - [Avoiding RLS Policy Errors in Supabase](https://nikofischer.com/supabase-error-row-level-security-policy)
+
+## Soporte y Contacto
+
+Para soporte técnico o consultas sobre el sistema, contactar a:
+- Email: jetro_lopez@outlook.com
+- WhatsApp: 961 146 1109
+
+## Licencia
+
+Todos los derechos reservados © Jetro Alfonso Lopez

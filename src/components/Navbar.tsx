@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Camera } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -41,7 +41,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
-            <Camera className="h-8 w-8 text-studio-brown" />
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Vanamo_Logo.svg/480px-Vanamo_Logo.svg.png" 
+              alt="Foto Réflex Logo" 
+              className="h-8 w-8 object-contain"
+            />
             <span className="text-xl font-playfair font-semibold text-studio-brown">Foto Réflex</span>
           </Link>
         </div>

@@ -121,7 +121,11 @@ const AdminSidebar = ({ isMobile = false }: AdminSidebarProps) => {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       <div className="p-4 flex items-center space-x-2">
-        <Camera size={24} className="text-studio-brown" />
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Vanamo_Logo.svg/480px-Vanamo_Logo.svg.png" 
+          alt="Foto Réflex Logo" 
+          className="h-6 w-6 object-contain"
+        />
         <span className="font-playfair font-bold text-xl text-studio-brown">Foto Réflex</span>
       </div>
       

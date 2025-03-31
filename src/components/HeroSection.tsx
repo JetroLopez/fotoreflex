@@ -33,7 +33,7 @@ const HeroSection = () => {
               isVisible ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            Capturamos momentos, creamos recuerdos
+            Reflejando lo mejor de ti
           </h1>
           
           <p 

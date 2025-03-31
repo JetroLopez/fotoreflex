@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Camera, Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,23 +10,24 @@ const Footer = () => {
           {/* Company Info */}
           <div className="flex flex-col">
             <div className="flex items-center gap-2 mb-4">
-              <Camera className="h-6 w-6" />
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Vanamo_Logo.svg/480px-Vanamo_Logo.svg.png" 
+                alt="Foto Réflex Logo" 
+                className="h-6 w-6 object-contain"
+              />
               <span className="text-xl font-playfair">Foto Réflex</span>
             </div>
             <p className="text-studio-beige/80 mb-6">
               Fotografía para todo tipo de eventos.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/foto__reflex/" target="_blank" rel="noopener noreferrer" className="text-studio-beige hover:text-studio-red transition-colors">
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-studio-beige hover:text-studio-red transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://www.facebook.com/FotoReflexEstudio/" target="_blank" rel="noopener noreferrer" className="text-studio-beige hover:text-studio-red transition-colors">
+              <a href="https://www.facebook.com/estudiovixtorr/" target="_blank" rel="noopener noreferrer" className="text-studio-beige hover:text-studio-red transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="mailto:foto_reflex_digital@hotmail.com" className="text-studio-beige hover:text-studio-red transition-colors">
-                <Mail className="h-5 w-5" />
-              </a>
-              <a href="https://wa.me/529611342752" target="_blank" rel="noopener noreferrer" className="text-studio-beige hover:text-studio-red transition-colors">
+              <a href="https://wa.me/529641244016" target="_blank" rel="noopener noreferrer" className="text-studio-beige hover:text-studio-red transition-colors">
                 <Phone className="h-5 w-5" />
               </a>
             </div>
