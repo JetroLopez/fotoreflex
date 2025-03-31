@@ -106,19 +106,27 @@ const OpcionesTab = () => {
     // Si es un string, intentar parsearlo como JSON
     if (typeof processedChoices === 'string') {
       try {
-        processedChoices = JSON.parse(processedChoices);
+        const parsed = JSON.parse(processedChoices);
+        // Si es un array de strings (formato incorrecto), convertirlo a objeto
+        if (Array.isArray(parsed)) {
+          const joinedString = parsed.join('');
+          try {
+            processedChoices = JSON.parse(joinedString);
+          } catch {
+            processedChoices = parsed;
+          }
+        } else {
+          processedChoices = parsed;
+        }
       } catch (e) {
-        // Si no es JSON válido, usar el valor tal cual
         processedChoices = option.choices;
       }
     }
 
-    // Si es un array, convertirlo a texto con saltos de línea
-    const choicesText = Array.isArray(processedChoices) 
-      ? processedChoices.join('\n') 
-      : typeof processedChoices === 'object' 
-        ? JSON.stringify(processedChoices, null, 2) 
-        : String(processedChoices);
+    // Convertir el objeto a string formateado
+    const choicesText = typeof processedChoices === 'object' 
+      ? JSON.stringify(processedChoices, null, 2)
+      : String(processedChoices);
     
     setFormData({
       service_id: option.service_id,
@@ -173,11 +181,35 @@ const OpcionesTab = () => {
     // Procesar las opciones según el tipo
     let processedChoices;
     if (formData.option_type === 'dropdown') {
-      // Para dropdown, dividir por líneas y filtrar líneas vacías
-      processedChoices = formData.choices
-        .split('\n')
-        .map(line => line.trim())
-        .filter(line => line !== '');
+      try {
+        // Intentar parsear como JSON primero
+        processedChoices = JSON.parse(formData.choices);
+      } catch {
+        // Si no es JSON válido, dividir por líneas y crear objeto
+        const lines = formData.choices
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line !== '');
+          
+        if (lines.length > 0) {
+          // Verificar si las líneas tienen formato "clave: valor"
+          const hasKeyValueFormat = lines.some(line => line.includes(':'));
+          
+          if (hasKeyValueFormat) {
+            // Crear objeto a partir de las líneas
+            processedChoices = {};
+            lines.forEach(line => {
+              const [key, value] = line.split(':').map(part => part.trim());
+              if (key && value) {
+                processedChoices[key.replace(/['"]/g, '')] = Number(value.replace(/[,}]/g, ''));
+              }
+            });
+          } else {
+            // Usar array simple si no hay formato clave:valor
+            processedChoices = lines;
+          }
+        }
+      }
     } else {
       // Para checkbox, usar el texto tal cual
       processedChoices = formData.choices.trim();
