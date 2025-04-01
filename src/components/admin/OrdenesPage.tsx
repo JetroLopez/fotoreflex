@@ -61,6 +61,8 @@ type Order = {
     base_price: number;
   };
   selected_options?: string[];
+  advance_payment?: number;
+  remaining_payment?: number;
 };
 
 const OrdenesPage = () => {
@@ -151,7 +153,9 @@ const OrdenesPage = () => {
             service:service_id (
               description
             )
-          )
+          ),
+          advance_payment,
+          remaining_payment
         `) as { data: Order[] | null; error: any };
 
       if (error) throw error;
@@ -598,9 +602,23 @@ ${orden.priority === 'urgente' ? '¡URGENTE!' : ''}
               </div>
 
               <div className="border-t pt-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium">Total</span>
-                  <span className="font-medium text-lg">{formatPrice(selectedOrder.total_price)}</span>
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Total</span>
+                    <span className="font-medium text-lg">{formatPrice(selectedOrder.total_price)}</span>
+                  </div>
+                  {selectedOrder.advance_payment !== undefined && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">Anticipo</span>
+                      <span className="text-sm">{formatPrice(selectedOrder.advance_payment)}</span>
+                    </div>
+                  )}
+                  {selectedOrder.remaining_payment !== undefined && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">Restante</span>
+                      <span className="text-sm">{formatPrice(selectedOrder.remaining_payment)}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

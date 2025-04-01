@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogFooter,
   DialogDescription,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useToast } from '@/hooks/use-toast';
@@ -307,6 +308,7 @@ ${orden.comments ? `Comentarios: ${orden.comments}` : ''}
       // Generar folio único
       const folio = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
       
+      // Eliminamos remaining_payment porque es una columna generada en la base de datos
       const orderData = {
         customer_id: member.customer.id,
         group_id: groupId,
@@ -314,9 +316,10 @@ ${orden.comments ? `Comentarios: ${orden.comments}` : ''}
         selected_options: data.selected_options,
         total_price: data.total_price,
         advance_payment: data.advance_payment,
+        // Quitamos remaining_payment ya que es una columna generada
         delivery_format: data.delivery_format,
-        status: 'pendiente',
-        priority: 'normal',
+        status: 'pendiente' as 'pendiente' | 'en_proceso' | 'completado' | 'entregado' | 'cancelado',
+        priority: 'normal' as 'normal' | 'urgente',
         comments: data.comments || null,
         files_path: null,
         folio: folio,
@@ -389,7 +392,30 @@ ${orden.comments ? `Comentarios: ${orden.comments}` : ''}
               ? "Revisa los detalles de la orden creada" 
               : "Completa el formulario para crear una nueva orden"}
           </DialogDescription>
+          <DialogClose 
+            className={`absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground ${showPreview ? 'invisible' : 'visible'}`} 
+          />
         </DialogHeader>
+
+        <div className="absolute right-4 top-4">
+          <button
+            onClick={() => {
+              if (showPreview) {
+                setShowPreview(false);
+                onOpenChange(false);
+              } else {
+                onOpenChange(false);
+              }
+            }}
+            className={`rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground ${showPreview ? 'visible' : 'invisible'}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span className="sr-only">Cerrar</span>
+          </button>
+        </div>
 
         {showPreview ? (
           // Vista previa de la orden creada
@@ -472,7 +498,10 @@ ${orden.comments ? `Comentarios: ${orden.comments}` : ''}
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => onOpenChange(false)}
+                  onClick={() => {
+                    setShowPreview(false);
+                    onOpenChange(false);
+                  }}
                   className="mr-auto"
                 >
                   Cerrar

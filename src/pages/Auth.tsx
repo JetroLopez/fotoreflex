@@ -93,7 +93,7 @@ const Auth = () => {
       
       toast({
         title: "Inicio de sesión exitoso",
-        description: "Bienvenido de nuevo a FotoLeón",
+        description: "Bienvenido de nuevo a Foto Réflex",
       });
     } catch (error) {
       toast({
