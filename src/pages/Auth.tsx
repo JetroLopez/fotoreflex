@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -145,7 +144,11 @@ const Auth = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-studio-beige/10 p-4">
       <div className="mb-8 text-center">
         <div className="flex justify-center mb-2">
-          <Camera className="h-12 w-12 text-studio-brown" />
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Vanamo_Logo.svg/480px-Vanamo_Logo.svg.png" 
+            alt="Foto Réflex Logo" 
+            className="h-12 w-12 object-contain"
+          />
         </div>
         <h1 className="text-3xl font-playfair font-bold text-studio-brown">Foto Réflex</h1>
         <p className="text-studio-brown/80">Sistema de Administración</p>
