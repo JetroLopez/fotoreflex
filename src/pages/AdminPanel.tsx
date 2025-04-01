@@ -10,6 +10,7 @@ import AjustesPage from '@/components/admin/AjustesPage';
 import GruposPage from '@/components/admin/GruposPage';
 import DetalleGrupoPage from '@/components/admin/grupos/DetalleGrupoPage';
 import ConfiguracionPage from '@/components/admin/configuracion/ConfiguracionPage';
+import ContactoPage from '@/pages/admin/ContactoPage';
 
 const AdminPanel = () => {
   return (
@@ -24,6 +25,7 @@ const AdminPanel = () => {
           <Route path="/fotografias" element={<FotografiasPage />} />
           <Route path="/ajustes" element={<AjustesPage />} />
           <Route path="/configuracion" element={<ConfiguracionPage />} />
+          <Route path="/contacto" element={<ContactoPage />} />
         </Routes>
       </AdminLayout>
     </AuthProvider>
